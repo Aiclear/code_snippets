@@ -1,0 +1,71 @@
+[
+  {
+    "id": 1,
+    "title": "say hello",
+    "content": "public class SayHello {\n  public static void main() {\n    System.out.println(\"Hello World!!!\");\n  }\n}\n",
+    "language": "java",
+    "tags": [],
+    "updatedAt": "2026-06-14T17:46:12+08:00"
+  },
+  {
+    "id": 2,
+    "title": "Read Write Json File",
+    "content": "import json\n\n# 写入 JSON\ndata = {\"name\": \"Alice\", \"age\": 30, \"city\": \"Paris\"}\nwith open(\"data.json\", \"w\", encoding=\"utf-8\") as f:\n    json.dump(data, f, indent=2, ensure_ascii=False)\n\n# 读取 JSON\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n    loaded = json.load(f)\nprint(loaded[\"name\"])  # Alice",
+    "language": "python",
+    "tags": [],
+    "updatedAt": "2026-06-14T17:47:22+08:00"
+  },
+  {
+    "id": 3,
+    "title": "数组去重",
+    "content": "const arr = [1, 2, 2, 3, 4, 4, 5];\n\n// 方法1：Set\nconst unique1 = [...new Set(arr)];\n\n// 方法2：filter + indexOf\nconst unique2 = arr.filter((item, index) =\u003e arr.indexOf(item) === index);\n\n// 方法3：reduce\nconst unique3 = arr.reduce((acc, cur) =\u003e \n    acc.includes(cur) ? acc : [...acc, cur], []);\n\nconsole.log(unique1); // [1,2,3,4,5]",
+    "language": "javascript",
+    "tags": [],
+    "updatedAt": "2026-06-14T17:49:19+08:00"
+  },
+  {
+    "id": 4,
+    "title": "并发 Goroutine 示例（WaitGroup）",
+    "content": "package main\n\nimport (\n    \"fmt\"\n    \"sync\"\n    \"time\"\n)\n\nfunc worker(id int, wg *sync.WaitGroup) {\n    defer wg.Done() // 完成时计数减1\n    fmt.Printf(\"Worker %d starting\\n\", id)\n    time.Sleep(time.Second)\n    fmt.Printf(\"Worker %d done\\n\", id)\n}\n\nfunc main() {\n    var wg sync.WaitGroup\n    for i := 1; i \u003c= 3; i++ {\n        wg.Add(1)\n        go worker(i, \u0026wg)\n    }\n    wg.Wait() // 等待所有worker完成\n    fmt.Println(\"All workers finished\")\n}",
+    "language": "go",
+    "tags": [],
+    "updatedAt": "2026-06-14T17:50:22+08:00"
+  },
+  {
+    "id": 5,
+    "title": "Git：常用别名和高级命令",
+    "content": "# 设置别名\ngit config --global alias.co checkout\ngit config --global alias.br branch\ngit config --global alias.st status\ngit config --global alias.unstage 'reset HEAD --'\n\n# 清理本地已合并的分支（保留 main/master）\ngit branch --merged | grep -v \"\\*\\|main\\|master\" | xargs -n 1 git branch -d\n\n# 修改上一次提交信息\ngit commit --amend -m \"新的提交信息\"\n\n# 撤销最后一次提交但保留修改\ngit reset --soft HEAD~1",
+    "language": "shell",
+    "tags": [],
+    "updatedAt": "2026-06-14T17:52:06+08:00"
+  },
+  {
+    "id": 6,
+    "title": "Python：带进度条的循环（tqdm）",
+    "content": "# 安装：pip install tqdm\nfrom tqdm import tqdm\nimport time\n\nfor i in tqdm(range(100), desc=\"Processing\"):\n    time.sleep(0.01)  # 模拟任务\n\n# 处理列表时显示进度\nitems = [\"a\", \"b\", \"c\", \"d\"]\nfor item in tqdm(items, unit=\"item\"):\n    time.sleep(0.1)",
+    "language": "python",
+    "tags": [],
+    "updatedAt": "2026-06-14T17:52:32+08:00"
+  },
+  {
+    "id": 7,
+    "title": "监控日志中的错误并发送警告",
+    "content": "#!/bin/bash\nLOG_FILE=\"/var/log/app.log\"\nALERT_EMAIL=\"admin@example.com\"\n\ntail -Fn0 \"$LOG_FILE\" | while read line; do\n    if echo \"$line\" | grep -q \"ERROR\"; then\n        echo \"$line\" | mail -s \"App Error Detected\" \"$ALERT_EMAIL\"\n    fi\ndone",
+    "language": "shell",
+    "tags": [
+      "monitor",
+      "message"
+    ],
+    "updatedAt": "2026-06-14T17:53:07+08:00"
+  },
+  {
+    "id": 8,
+    "title": "正则表达式：常用模式",
+    "content": "# 匹配邮箱（基础版）\n\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b\n\n# 匹配中国大陆手机号（简单）\n1[3-9]\\d{9}\n\n# 提取 HTML 标签内的文本（慎用，建议用解析器）\n\u003c([a-z]+)\u003e(.*?)\u003c/\\1\u003e\n\n# 匹配 IPv4 地址\n\\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b",
+    "language": "shell",
+    "tags": [
+      "正则表达式"
+    ],
+    "updatedAt": "2026-06-14T17:54:01+08:00"
+  }
+]
